@@ -15,5 +15,5 @@
 
 A meme that captures how I currently feel about my university studies is ![](https://media1.tenor.com/m/RYuBIxyoFLAAAAAd/thomapyrin-paper-work.gif)
 
-Some links that capture how I waste time not doing my university studies are [Yes Theory](https://www.youtube.com/@YesTheory), [Mecca](https://www.mecca.com/en-nz/), [TikTok](https://www.tiktok.com/en/)
+Some links that capture how I waste time not doing my university studies, and how you can do this too are [Yes Theory](https://www.youtube.com/@YesTheory), [Mecca](https://www.mecca.com/en-nz/), [TikTok](https://www.tiktok.com/en/)
 
