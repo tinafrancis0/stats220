@@ -6,7 +6,7 @@
 
 1. I am undertaking a degree in BSc Data Science
 2. I am taking STATS 220 because it seems interesting and fun, also because its a course I am required to take
-3. I am interested in learning about how to explore data and how to communicate effectively using data
+3. I am interested in learning about how to explore and analyse data to effectively improve helthcare outcomes
 
 ### Other random things you *must* know:
 * My love for coffee knows **no** limits
