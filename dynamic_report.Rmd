@@ -1,0 +1,113 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+body {
+  font-size: 18px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1 {
+  font-size: 36px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  color: #FF0000;
+}
+
+h2 {
+  font-size: 30px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  color: #FF0000
+```
+
+# Analysing Footwear Trends
+## What Kind of Shoes are popular? 
+
+*The focus of this data collection is to observe the types of shoes people wear in public spaces.*
+
+*This data will be logged through a survey that tracks shoe type, shoe colour and the time of day for added context.*
+
+![](https://media1.tenor.com/m/qOAZLg-C74MAAAAC/haikyuu-anime.gif)
+
+##**Summary**
+```{r}
+# Load tidyverse
+library(tidyverse)
+# Read file
+csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSjOgMFA5PBUFSGCQ1-_wskhlyws1MVr8CGVd2u2Ife_hNCk59jcngzWteRsTJTWQWK36jmnO1_b7GB/pub?output=csv"
+# Removing the first two columns that are irrelevant and renaming the remaining columns
+paste("The collected observational data")
+logged_data <- read_csv(csv_file) %>%
+  select(-c(1,2)) %>%
+  rename(shoe_type = 1,
+        shoe_popularity = 2,
+        shoe_colour = 3,
+        colour_popularity = 4,
+        time_of_day = 5)
+print(logged_data)
+# Finding the most popular shoe
+most_popular_shoe_pop <- max(logged_data$shoe_popularity)
+# Finding the shoe type based on index
+most_popular_shoe <- logged_data$shoe_type[logged_data$shoe_popularity == most_popular_shoe_pop]
+
+
+# Finding the least popular shoe
+least_popular_shoe_pop <- min(logged_data$shoe_popularity)
+# Finding the shoe type based on index
+least_popular_shoe <- logged_data$shoe_type[logged_data$shoe_popularity == least_popular_shoe_pop]
+
+
+
+# Finding the most popular shoe colour
+most_popular_shoecolour_pop <- max(logged_data$colour_popularity)
+# Finding the shoe colour based on index
+most_popular_shoecolour <- logged_data$shoe_colour[logged_data$colour_popularity == most_popular_shoecolour_pop]
+
+
+
+# Finding the least popular shoe colour
+least_popular_shoecolour_pop <- min(logged_data$colour_popularity)
+# Finding the shoe colour based on index
+least_popular_shoecolour <- logged_data$shoe_colour[logged_data$colour_popularity == least_popular_shoecolour_pop]
+
+
+
+# Creating a bar chart that compares how popular each shoe type is
+## **Shoe Trends by Type**
+
+ggplot(data = logged_data) +
+  geom_bar(aes(x = shoe_type, fill = shoe_popularity)) +
+  labs(x = "Shoe Type", y = "Number of Shoe Type", title = "Shoe Trends",
+       subtitle = paste("Most popular Shoe: ", most_popular_shoe, "   Least popular Shoe: ", least_popular_shoe)
+       )
+
+# Creating a bar chart that compares how popular each shoe colour is
+ggplot(data = logged_data) +
+  geom_bar(aes(x = shoe_colour, fill = colour_popularity)) +
+  labs(x = "Shoe Colour", y = "Number of Shoe Colour", title = "Shoe Colour Trends",
+       subtitle = paste("Most popular Shoe Colour: ", most_popular_shoecolour, "   Least popular Shoe Colour: ", least_popular_shoecolour)
+       )
+
+
+```
+
+## **Interpretation**
+The report showcases the findings from the data collection providing some valuable insights about footwear trends. The most popular choice of footwear was sneakers, which aligns with expectations as they are both comfortable and fashionable. In contrast, the least popular shoe type was heels, which is surprising, as it was anticipated that traditional/cultural footwear would be the least popular; however this result may have been influenced by the location of data collection at the time. If the event where the data was collected had a cultural significance, it could have led to a higher representation of traditional footwear. This highlights how the context of data collection significantly impacts results, as in this case. In terms of shoe colour preferences, the most popular colour of footwear was found to be black, which is unsurprising given its widespread appeal. The least popular colour of footwear emerged to be khaki, this is also expected as it is a relatively uncommon footwear colour.
+
+## **Key Observations**
+One key takeaway from this analysis is that observational data is highly dependent on the environment in which it is collected. For example, it would be different if the observational data was being collected at a military site where we would likely have boots as the most popular shoe type and khaki as the most popular shoe colour. This demonstrates the importance of contextual factors in shaping footwear trends. 
+
+Additionally, the sample size also plays a crucial role in data reliability and accuracy. While heels were found to be the least common shoe type in this dataset, a larger sample size would have likely resulted in Traditional/cultural footwear being the least common, as was expected, since this data was collection was influenced by a cultural event. If we were to have a greater sample size, we would get a more representative understanding of footwear preferences. 
